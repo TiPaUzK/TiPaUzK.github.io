@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firstname Lastname - PhD Candidate</title>
+    <!-- Pulls in Tailwind CSS for styling without any downloads -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Pulls in clean academic fonts from Google Fonts -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;600&display=swap');
+        body { font-family: 'Lora', serif; }
+        h1, h2, h3, .sans { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-white text-slate-800 antialiased leading-relaxed">
+    <main class="max-w-3xl mx-auto px-6 py-16 md:py-24">
+        
+        <!-- Header Section -->
+        <header class="mb-16 border-b border-slate-200 pb-8">
+            <h1 class="text-3xl md:text-4xl font-semibold text-slate-900 mb-2">Firstname Lastname</h1>
+            <p class="text-lg sans text-slate-600 mb-4">PhD Candidate in Accounting | [University Name]</p>
+            <div class="flex gap-4 sans text-sm">
+                <a href="mailto:email@university.edu" class="text-blue-700 hover:underline">Email</a>
+                <a href="CV_Firstname_Lastname.pdf" class="text-blue-700 hover:underline">Curriculum Vitae</a>
+                <a href="https://github.com/yourusername" class="text-blue-700 hover:underline">GitHub</a>
+                <a href="https://linkedin.com/in/yourprofile" class="text-blue-700 hover:underline">LinkedIn</a>
+            </div>
+        </header>
+
+        <!-- Research Interests -->
+        <section class="mb-12">
+            <h2 class="text-xl font-semibold text-slate-900 mb-4 uppercase tracking-wide text-sm sans">Research Interests</h2>
+            <p>Empirical Corporate Finance, Financial Reporting, Executive Compensation, Open Science in Accounting.</p>
+        </section>
+
+        <!-- Job Market Paper -->
+        <section class="mb-12">
+            <h2 class="text-xl font-semibold text-slate-900 mb-6 uppercase tracking-wide text-sm sans">Job Market Paper</h2>
+            <div class="mb-6">
+                <h3 class="text-lg font-semibold text-slate-900 mb-1">Paper Title Goes Here: A Study on Market Dynamics</h3>
+                <p class="sans text-sm text-slate-600 mb-3">Committee: Chair Name, Member 1, Member 2</p>
+                <div class="flex gap-3 mb-5 sans text-sm">
+                    <a href="JMP_Firstname_Lastname.pdf" class="inline-block bg-slate-900 text-white px-4 py-1.5 rounded hover:bg-slate-700 transition">Download PDF</a>
+                    <a href="https://github.com/yourusername/jmp-repo" class="inline-block border border-slate-300 text-slate-700 px-4 py-1.5 rounded hover:bg-slate-50 transition">View GitHub Repo</a>
+                </div>
+                <p class="text-sm text-slate-700 text-justify">
+                    <strong>Abstract:</strong> This paper investigates [insert abstract here]. Using a novel dataset of [Data], I find that [Result 1]. Furthermore, [Result 2]. These findings suggest [Implication], providing new insights into [Field].
+                </p>
+            </div>
+        </section>
+
+        <!-- Working Papers -->
+        <section class="mb-12">
+            <h2 class="text-xl font-semibold text-slate-900 mb-6 uppercase tracking-wide text-sm sans">Working Papers</h2>
+            <ul class="space-y-6">
+                <li>
+                    <h3 class="text-lg font-semibold text-slate-900">Another Working Paper Title</h3>
+                    <p class="sans text-sm text-slate-600 mb-1">with Co-author 1 and Co-author 2</p>
+                    <p class="text-sm text-slate-700"><em>Status: Revise and Resubmit at Journal of Accounting and Economics</em></p>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Teaching -->
+        <section class="mb-12">
+            <h2 class="text-xl font-semibold text-slate-900 mb-6 uppercase tracking-wide text-sm sans">Teaching Experience</h2>
+            <ul class="list-disc pl-5 space-y-2 text-slate-700 text-sm">
+                <li><strong>Instructor:</strong> Financial Accounting (Undergraduate), Spring 2025. <em>Evaluation: 4.8/5.0</em></li>
+                <li><strong>Teaching Assistant:</strong> Corporate Finance (MBA), Fall 2024.</li>
+            </ul>
+        </section>
+
+    </main>
+</body>
+</html>
