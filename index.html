@@ -6,56 +6,97 @@
     <title>Timo Pauen</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Playfair+Display:wght@600&display=swap');
-        body { font-family: 'Open Sans', sans-serif; }
-        h1, h2, h3, .nav-brand { font-family: 'Playfair Display', serif; }
+        /* A utilitarian, academic sans-serif font standard for economics/accounting pages */
+        body { 
+            font-family: Arial, Helvetica, sans-serif; 
+            color: #222; 
+            line-height: 1.5; 
+        }
+        /* Classic academic link styling */
+        a { 
+            color: #006699; 
+            text-decoration: underline; 
+        }
+        a:hover { 
+            color: #003366; 
+        }
+        /* Active nav link (Home) typically has no underline or distinct styling */
+        .nav-active {
+            color: #006699;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .nav-link {
+            color: #006699;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+        /* Square bullets to match David Veenman's layout */
+        ul { 
+            list-style-type: square; 
+            padding-left: 1.25rem; 
+        }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased">
+<body class="bg-white text-sm antialiased m-6 md:m-12 max-w-4xl">
 
-    <!-- Top Menu Band -->
-    <nav class="bg-white border-b border-slate-200 sticky top-0 z-10">
-        <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="nav-brand text-xl font-semibold text-slate-900">Timo Pauen</a>
-            <div class="flex gap-6 text-sm font-semibold text-slate-600">
-                <a href="index.html" class="text-blue-700">Home</a>
-                <a href="research.html" class="hover:text-blue-700 transition">Research</a>
-                <a href="cv.pdf" target="_blank" class="hover:text-blue-700 transition">CV</a>
-            </div>
-        </div>
+    <!-- Top Navigation -->
+    <nav class="mb-16 flex gap-4 text-base">
+        <a href="index.html" class="nav-active">Home</a>
+        <a href="research.html" class="nav-link">Research</a>
+        <a href="cv.pdf" target="_blank" class="nav-link">CV</a>
     </nav>
 
-    <!-- Main Content -->
-    <main class="max-w-4xl mx-auto px-6 py-16">
-        <div class="md:flex gap-12 items-start">
-            
-            <!-- Photo Placeholder -->
-            <div class="w-48 h-48 md:w-56 md:h-56 flex-shrink-0 mb-8 md:mb-0">
-                <img src="your-photo.jpg" alt="Timo Pauen" class="w-full h-full object-cover rounded-md shadow-sm border border-slate-200 bg-slate-200">
-            </div>
+    <!-- Header / Contact Block -->
+    <div class="flex flex-col sm:flex-row justify-between items-start mb-12 max-w-2xl">
+        
+        <!-- Left Side: Impressum / Contact -->
+        <div class="mb-6 sm:mb-0">
+            <h1 class="text-base font-bold mb-1">Timo Pauen</h1>
+            <p class="italic mb-0">Ph.D. Candidate in Accounting</p>
+            <p class="mb-0">University of Cologne</p>
+            <p class="mb-0">Albertus-Magnus-Platz</p>
+            <p class="mb-4">50923 Cologne, Germany</p>
 
-            <!-- Bio & Info -->
-            <div>
-                <h1 class="text-3xl font-semibold text-slate-900 mb-2">Timo Pauen</h1>
-                <p class="text-lg text-slate-600 mb-6">Ph.D. Candidate in Accounting<br>University of Cologne</p>
-                
-                <p class="leading-relaxed mb-6 text-slate-700">
-                    I am a Ph.D. Candidate in Accounting at the University of Cologne. My research focuses on quantitative accounting, empirical finance, expected returns, and Bayesian econometric modeling. I am particularly interested in how analysts form expectations and how this impacts market pricing.
-                </p>
+            <p class="mb-4">Email: timo.pauen@wiso.uni-koeln.de</p>
 
-                <p class="leading-relaxed mb-8 text-slate-700">
-                    <strong>I am on the 2026/2027 academic job market.</strong>
-                </p>
-
-                <!-- Contact Info -->
-                <h2 class="text-lg font-semibold text-slate-900 mb-3 border-b border-slate-200 pb-2">Contact</h2>
-                <ul class="text-slate-700 space-y-2 text-sm">
-                    <li><strong>Email:</strong> <a href="mailto:timo.pauen@wiso.uni-koeln.de" class="text-blue-700 hover:underline">timo.pauen@wiso.uni-koeln.de</a></li>
-                    <li><strong>Office:</strong> University of Cologne, Albertus-Magnus-Platz, 50923 Cologne, Germany</li>
-                    <li><strong>Links:</strong> <a href="https://github.com/TiPaUzK" class="text-blue-700 hover:underline">GitHub Profile</a></li>
-                </ul>
-            </div>
+            <p class="mb-2"><a href="https://github.com/TiPaUzK">GitHub Profile</a></p>
+            <p class="mb-0"><a href="https://controlling.uni-koeln.de/de/seminar/team/mitarbeitende/msc-timo-pauen">University profile</a></p>
         </div>
-    </main>
+        
+        <!-- Right Side: Photo -->
+        <div class="w-32 flex-shrink-0">
+            <!-- Ensure your image file is named appropriately and placed in the same folder -->
+            <img src="your-photo.jpg" alt="Timo Pauen" class="w-full h-auto object-cover border border-slate-300 shadow-sm">
+        </div>
+    </div>
+
+    <!-- Areas of expertise -->
+    <section class="mb-10">
+        <h2 class="text-base font-bold mb-3">Areas of expertise</h2>
+        <p class="text-slate-800">
+            Quantitative accounting, empirical finance, expected returns, belief formation and analyst expectations, measurement-error econometrics, Bayesian methods
+        </p>
+    </section>
+
+    <!-- Experience -->
+    <section class="mb-10">
+        <h2 class="text-base font-bold mb-3">Experience</h2>
+        <ul class="space-y-2 text-slate-800">
+            <li>[Year]-current: Ph.D. Candidate / Research Assistant, University of Cologne</li>
+            <li>[Year]-[Year]: Instructor for Cost Accounting (B.Sc.) and Value-Based Controlling (M.Sc.), University of Cologne</li>
+        </ul>
+    </section>
+
+    <!-- Education -->
+    <section class="mb-10">
+        <h2 class="text-base font-bold mb-3">Education</h2>
+        <ul class="space-y-2 text-slate-800">
+            <li>[Year]: Expected Ph.D. in Accounting, University of Cologne</li>
+            <li>[Year]: [Your M.Sc. Degree], [University Name]</li>
+            <li>[Year]: [Your B.Sc. Degree], [University Name]</li>
+        </ul>
+    </section>
+
 </body>
 </html>
