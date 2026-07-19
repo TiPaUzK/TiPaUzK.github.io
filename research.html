@@ -7,28 +7,37 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Playfair+Display:wght@700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap');
         
         body { font-family: 'Open Sans', sans-serif; }
-        .nav-brand { font-family: 'Playfair Display', serif; }
         
-        .section-heading {
-            font-family: 'Open Sans', sans-serif;
-            font-weight: 800;
-            letter-spacing: -0.02em;
+        /* Uppercase, Bold headers for that clean academic look */
+        .section-header { 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            letter-spacing: -0.02em; 
         }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
 
-    <!-- Top Menu Band -->
-    <nav class="bg-white border-b border-slate-200 sticky top-0 z-10">
-        <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="nav-brand text-xl font-semibold text-slate-900">Timo Pauen</a>
-            <div class="flex gap-6 text-sm font-semibold text-slate-600">
-                <a href="index.html" class="hover:text-blue-700 transition">Home</a>
-                <a href="research.html" class="text-blue-700">Research</a>
-                <a href="cv.pdf" target="_blank" class="hover:text-blue-700 transition">CV</a>
+    <!-- Black Header with Working Menu -->
+    <nav class="bg-black text-white py-5 px-6 relative">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <!-- Menu Button -->
+            <button onclick="toggleMenu()" class="text-xl hover:text-gray-300 transition">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <span class="text-lg tracking-widest uppercase">TIMO PAUEN</span>
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        
+        <!-- Dropdown Menu -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-black z-50 border-t border-gray-800">
+            <div class="flex flex-col p-6 gap-4 text-center">
+                <a href="index.html" class="hover:text-gray-300 transition uppercase tracking-widest">Home</a>
+                <a href="research.html" class="hover:text-gray-300 transition uppercase tracking-widest">Research</a>
+                <a href="cv.pdf" target="_blank" class="hover:text-gray-300 transition uppercase tracking-widest">CV</a>
             </div>
         </div>
     </nav>
@@ -36,13 +45,15 @@
     <!-- Main Content -->
     <main class="max-w-4xl mx-auto px-6 py-16">
         
+        <h1 class="section-header text-3xl text-slate-900 mb-12">Research</h1>
+
         <!-- Working Papers -->
         <section class="mb-16">
-            <h2 class="section-heading text-2xl md:text-3xl text-slate-900 mb-8">Working Papers</h2>
+            <h2 class="section-header text-xl text-slate-900 mb-8">Working Papers</h2>
             
             <!-- Job Market Paper -->
             <div class="mb-8">
-                <h3 class="text-[1.1rem] md:text-lg font-bold text-slate-900 mb-1">Cost of Capital: A Bayesian Approach <!--[cite: 1] --></h3>
+                <h3 class="text-[1.1rem] font-bold text-slate-900 mb-1">Deriving Valuation-Relevant Earnings: A Bayesian Approach[cite: 1]</h3>
                 <p class="text-slate-700 mb-0">Single authored (2026) &mdash; <span class="font-semibold">Job Market Paper</span></p>
                 <p class="italic text-slate-700 mb-1">Working Paper</p>
                 <div class="text-[0.95rem]">
@@ -52,7 +63,7 @@
 
             <!-- Single-Authored Paper 2 -->
             <div class="mb-8">
-                <h3 class="text-[1.1rem] md:text-lg font-bold text-slate-900 mb-1">Certify First: Evaluating Expected-Return Proxies <!--[cite: 1] --></h3>
+                <h3 class="text-[1.1rem] font-bold text-slate-900 mb-1">Certify First: Evaluating Expected-Return Proxies[cite: 1]</h3>
                 <p class="text-slate-700 mb-0">Single authored (2026)</p>
                 <p class="italic text-slate-700 mb-1">Working Paper</p>
                 <div class="text-[0.95rem]">
@@ -62,25 +73,23 @@
 
             <!-- Co-Authored Paper 3 -->
             <div class="mb-8">
-                <h3 class="text-[1.1rem] md:text-lg font-bold text-slate-900 mb-1">A Meta-Method to Improve Implied Cost of Capital Metrics <!--[cite: 1] --></h3>
-                <p class="text-slate-700 mb-0">with C. Homburg, L. Rothe, & R. Schick <!--[cite: 1] --> (2026)</p>
+                <h3 class="text-[1.1rem] font-bold text-slate-900 mb-1">A Meta-Method to Improve Implied Cost of Capital Metrics[cite: 1]</h3>
+                <p class="text-slate-700 mb-0">with C. Homburg, L. Rothe, & R. Schick[cite: 1] (2026)</p>
                 <p class="italic text-slate-700 mb-1">Working Paper</p>
             </div>
-            
         </section>
 
         <!-- Publications -->
         <section class="mb-16">
-            <h2 class="section-heading text-2xl md:text-3xl text-slate-900 mb-8">Publications</h2>
+            <h2 class="section-header text-xl text-slate-900 mb-8">Publications</h2>
             <p class="text-slate-600 italic">No peer-reviewed publications currently.</p>
         </section>
 
         <!-- Code Repositories -->
         <section class="mb-16">
-            <h2 class="section-heading text-2xl md:text-3xl text-slate-900 mb-8">Code repositories</h2>
+            <h2 class="section-header text-xl text-slate-900 mb-8">Code repositories</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Bayesian Repo Card Placeholder -->
                 <div class="border border-slate-200 bg-white shadow-sm hover:shadow-md transition duration-200">
                     <div class="bg-slate-100 h-48 w-full flex items-center justify-center border-b border-slate-200 text-slate-400">
                         <div class="text-center">
@@ -89,7 +98,7 @@
                         </div>
                     </div>
                     <div class="p-5">
-                        <h4 class="font-bold text-slate-900 mb-2">Deriving Valuation-Relevant Earnings: A Bayesian Approach <!--[cite: 1] --></h4>
+                        <h4 class="font-bold text-slate-900 mb-2">Deriving Valuation-Relevant Earnings: A Bayesian Approach[cite: 1]</h4>
                         <p class="text-sm text-slate-600 mb-4 leading-relaxed">
                             Code and data pipelines to replicate the Bayesian framework for recovering expected returns.
                         </p>
@@ -99,9 +108,15 @@
                     </div>
                 </div>
             </div>
-            
         </section>
-
     </main>
+
+    <!-- JavaScript to toggle the menu -->
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+    </script>
 </body>
 </html>
