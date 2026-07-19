@@ -14,14 +14,24 @@
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
 
-    <!-- Black Header -->
-    <nav class="bg-black text-white py-5 px-6">
+    <!-- Black Header with Working Menu -->
+    <nav class="bg-black text-white py-5 px-6 relative">
         <div class="max-w-4xl mx-auto flex justify-between items-center">
-            <div class="flex items-center gap-4">
-                <i class="fa-solid fa-bars text-xl"></i>
-                <span class="text-lg tracking-widest uppercase">TIMO PAUEN</span>
-            </div>
+            <!-- Menu Button -->
+            <button onclick="toggleMenu()" class="text-xl hover:text-gray-300 transition">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <span class="text-lg tracking-widest uppercase">TIMO PAUEN</span>
             <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        
+        <!-- Dropdown Menu -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-black z-50 border-t border-gray-800">
+            <div class="flex flex-col p-6 gap-4 text-center">
+                <a href="index.html" class="hover:text-gray-300 transition uppercase tracking-widest">Home</a>
+                <a href="research.html" class="hover:text-gray-300 transition uppercase tracking-widest">Research</a>
+                <a href="cv.pdf" target="_blank" class="hover:text-gray-300 transition uppercase tracking-widest">CV</a>
+            </div>
         </div>
     </nav>
 
@@ -50,11 +60,26 @@
             <li>[2015]: Economics, University of Cologne</li>
         </ul>
 
+        <!-- Footer with Icons -->
         <section class="border-t border-slate-300 mt-12">
-            <a href="https://github.com/TiPaUzK" class="block w-full py-4 border-b border-slate-300 hover:bg-slate-200 transition text-slate-500 hover:text-slate-700 text-center text-lg">GitHub</a>
-            <a href="https://controlling.uni-koeln.de/de/seminar/team/mitarbeitende/msc-timo-pauen" class="block w-full py-4 border-b border-slate-300 hover:bg-slate-200 transition text-slate-500 hover:text-slate-700 text-center text-lg">Chair Page</a>
-            <a href="mailto:timo.pauen@wiso.uni-koeln.de" class="block w-full py-4 border-b border-slate-300 hover:bg-slate-200 transition text-slate-500 hover:text-slate-700 text-center text-lg">Email</a>
+            <a href="https://github.com/TiPaUzK" class="block w-full py-4 border-b border-slate-300 hover:bg-slate-200 transition text-slate-500 hover:text-slate-700 text-center text-lg">
+                <i class="fa-brands fa-github mr-2"></i> GitHub
+            </a>
+            <a href="https://controlling.uni-koeln.de/de/seminar/team/mitarbeitende/msc-timo-pauen" class="block w-full py-4 border-b border-slate-300 hover:bg-slate-200 transition text-slate-500 hover:text-slate-700 text-center text-lg">
+                <i class="fa-solid fa-building-columns mr-2"></i> Chair Page
+            </a>
+            <a href="mailto:timo.pauen@wiso.uni-koeln.de" class="block w-full py-4 border-b border-slate-300 hover:bg-slate-200 transition text-slate-500 hover:text-slate-700 text-center text-lg">
+                <i class="fa-regular fa-envelope mr-2"></i> Email
+            </a>
         </section>
     </main>
+
+    <!-- JavaScript to toggle the menu -->
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+    </script>
 </body>
 </html>
