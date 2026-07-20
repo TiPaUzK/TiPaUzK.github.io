@@ -13,20 +13,20 @@
 </head>
 <body class="bg-slate-50 text-slate-900 antialiased">
 
-    <!-- Black Header with Working Menu & Search -->
-    <nav class="bg-black text-white py-5 px-6 relative">
+    <!-- Black Header with Working Menu & Cross-Page Search -->
+    <nav class="bg-black text-white py-5 px-6 relative z-50">
         <div class="max-w-4xl mx-auto flex justify-between items-center">
-            <button onclick="toggleMenu()" class="text-xl hover:text-gray-300 transition w-6 text-left" aria-label="Toggle Navigation">
+            <button type="button" onclick="toggleMenu()" class="text-xl hover:text-gray-300 transition w-6 text-left cursor-pointer" aria-label="Toggle Navigation">
                 <i class="fa-solid fa-bars"></i>
             </button>
             <span class="text-lg tracking-widest uppercase font-semibold">TIMO PAUEN</span>
-            <button onclick="toggleSearch()" class="text-xl hover:text-gray-300 transition w-6 text-right" aria-label="Toggle Search">
+            <button type="button" onclick="toggleSearch()" class="text-xl hover:text-gray-300 transition w-6 text-right cursor-pointer" aria-label="Toggle Search">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </button>
         </div>
         
         <!-- Dropdown Menu -->
-        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-black z-50 border-t border-gray-800">
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-black border-t border-gray-800 shadow-lg">
             <div class="flex flex-col p-6 gap-4 text-center">
                 <a href="index.html" class="hover:text-gray-300 transition uppercase tracking-widest text-sm font-semibold">Home</a>
                 <a href="research.html" class="hover:text-gray-300 transition uppercase tracking-widest text-sm font-semibold">Research</a>
@@ -34,59 +34,63 @@
             </div>
         </div>
 
-        <!-- Interactive In-Page Search Bar -->
-        <div id="search-bar" class="hidden absolute top-full left-0 w-full bg-slate-900 z-50 border-t border-gray-800 p-4">
-            <div class="max-w-4xl mx-auto flex items-center gap-3">
+        <!-- Interactive Cross-Page Search Bar -->
+        <div id="search-bar" class="hidden absolute top-full left-0 w-full bg-slate-900 border-t border-gray-800 p-0 shadow-2xl">
+            <div class="max-w-4xl mx-auto p-4 flex items-center gap-3">
                 <i class="fa-solid fa-magnifying-glass text-gray-400"></i>
-                <input type="text" id="search-input" onkeyup="filterPageContent()" placeholder="Search on this page... (e.g., Bayesian, Cost of capital, Cologne)" class="w-full bg-transparent text-white focus:outline-none text-sm placeholder-gray-500">
-                <button onclick="clearSearch()" class="text-gray-400 hover:text-white text-xs uppercase tracking-wider font-semibold">Clear</button>
+                <input type="text" id="search-input" onkeyup="runSiteSearch()" placeholder="Search across Home & Research... (e.g., Cost of capital, Bayesian)" class="w-full bg-transparent text-white focus:outline-none text-sm placeholder-gray-500 py-1">
+                <button type="button" onclick="clearSearch()" class="text-gray-400 hover:text-white text-xs uppercase tracking-wider font-semibold cursor-pointer px-2">Clear</button>
             </div>
+            <!-- Search Results Dropdown -->
+            <div id="search-results" class="hidden max-h-72 overflow-y-auto border-t border-gray-800 bg-slate-900 w-full text-left"></div>
         </div>
     </nav>
 
     <main class="max-w-4xl mx-auto px-6 py-16">
-        <!-- No Results Notice -->
-        <div id="no-results" class="hidden text-center text-slate-500 py-8 text-lg">
-            No matching content found on this page.
-        </div>
-
-        <div class="flex flex-col items-center text-center mb-16">
-            <div class="w-40 md:w-48 mb-8">
+        <!-- Centered Welcome Section -->
+        <div id="welcome" class="flex flex-col items-center justify-center mb-16">
+            <div class="w-40 md:w-48 mb-8 mx-auto">
                 <img src="Timo Pauen_150x188.jpg" alt="Timo Pauen" class="w-full aspect-square object-cover shadow-sm rounded-full">
             </div>
-            <h1 class="font-extrabold text-3xl uppercase tracking-tight text-black mb-6">Welcome</h1>
-            <div class="max-w-3xl text-slate-800 text-[1.05rem] leading-relaxed space-y-6 text-left">
+            <h1 class="font-extrabold text-3xl uppercase tracking-tight text-black mb-6 text-center">Welcome</h1>
+            
+            <!-- Strictly Centered Text Block -->
+            <div class="max-w-3xl mx-auto text-center text-slate-800 text-[1.05rem] leading-relaxed space-y-6">
                 <p>Hi, I am a Ph.D. Candidate at the University of Cologne, Germany. The thread running through my work is that the errors in analysts' and investors' expectations are not random but structured and tied to how people process information. I come at this from both the econometrics of measuring expectations when the inputs are biased, and the modelling of processes that generate these expectations in the first place. My job market paper, "Deriving Cost-of-Capital-Relevant Earnings: A Bayesian Approach," is one instance — a Bayesian method that recovers the earnings expectations valuation requires, especially when the uncertainty in the information environment of analysts/investors is high.</p>
                 <p>This is my personal website. You can find my academic <a href="cv.pdf" target="_blank" class="text-[#0ea5e9] hover:underline font-semibold">CV here</a>.</p>
             </div>
         </div>
 
         <!-- Research Interests -->
-        <section class="mb-12">
+        <section id="research-interests" class="mb-12">
             <h2 class="font-bold text-2xl text-black mb-4">Research Interests</h2>
             <ul class="list-disc pl-5 text-slate-800 space-y-2">
-                <li>Cost of capital<!--[cite: 1] --></li>
-                <li>Belief formation<!--[cite: 1] --></li>
-                <li>Empirical asset pricing<!--[cite: 1] --></li>
-                <li>Measurement-error econometrics<!--[cite: 1] --></li>
-                <li>Bayesian econometrics<!--[cite: 1] --></li>
+                <li>Cost of capital</li>
+                <li>Belief formation</li>
+                <li>Empirical asset pricing</li>
+                <li>Measurement-error econometrics</li>
+                <li>Bayesian econometrics</li>
             </ul>
         </section>
 
         <!-- Experience -->
-        <h2 class="font-bold text-2xl text-black mb-4">Experience</h2>
-        <ul class="list-disc pl-5 mb-12 text-slate-800 space-y-2">
-            <li>[2021]&ndash;current: Ph.D. Candidate / Research Assistant, University of Cologne</li>
-            <li>[2021]&ndash;current: Instructor for Cost Accounting (B.Sc.) and Value-Based Controlling (M.Sc.), University of Cologne</li>
-        </ul>
+        <section id="experience" class="mb-12">
+            <h2 class="font-bold text-2xl text-black mb-4">Experience</h2>
+            <ul class="list-disc pl-5 text-slate-800 space-y-2">
+                <li>[2021]&ndash;current: Ph.D. Candidate / Research Assistant, University of Cologne</li>
+                <li>[2021]&ndash;current: Instructor for Cost Accounting (B.Sc.) and Value-Based Controlling (M.Sc.), University of Cologne</li>
+            </ul>
+        </section>
 
         <!-- Education -->
-        <h2 class="font-bold text-2xl text-black mb-4">Education</h2>
-        <ul class="list-disc pl-5 mb-12 text-slate-800 space-y-2">
-            <li>[2027]: Expected Ph.D. in Accounting, University of Cologne</li>
-            <li>[2021]: Economics, Radboud University Nijmegen</li>
-            <li>[2015]: Economics, University of Cologne</li>
-        </ul>
+        <section id="education" class="mb-12">
+            <h2 class="font-bold text-2xl text-black mb-4">Education</h2>
+            <ul class="list-disc pl-5 text-slate-800 space-y-2">
+                <li>[2027]: Expected Ph.D. in Accounting, University of Cologne</li>
+                <li>[2021]: Economics, Radboud University Nijmegen</li>
+                <li>[2015]: Economics, University of Cologne</li>
+            </ul>
+        </section>
 
         <!-- Footer -->
         <section class="border-t border-slate-300 mt-12">
@@ -102,55 +106,82 @@
         </section>
     </main>
 
+    <!-- Cross-Page Search Script -->
     <script>
+        const siteIndex = [
+            { page: "Home", section: "Welcome & JMP", text: "Hi, I am a Ph.D. Candidate at the University of Cologne. Job Market Paper: Deriving Cost-of-Capital-Relevant Earnings: A Bayesian Approach.", url: "index.html#welcome" },
+            { page: "Home", section: "Research Interests", text: "Cost of capital, Belief formation, Empirical asset pricing, Measurement-error econometrics, Bayesian econometrics.", url: "index.html#research-interests" },
+            { page: "Home", section: "Experience", text: "Ph.D. Candidate / Research Assistant, University of Cologne. Instructor for Cost Accounting and Value-Based Controlling.", url: "index.html#experience" },
+            { page: "Home", section: "Education", text: "Expected Ph.D. in Accounting (2027), University of Cologne. Economics, Radboud University Nijmegen.", url: "index.html#education" },
+            { page: "Research", section: "Job Market Paper", text: "Deriving Cost-of-Capital-Relevant Earnings: A Bayesian Approach (Single authored, 2026)", url: "research.html#jmp" },
+            { page: "Research", section: "Working Paper", text: "Certify First: Evaluating Expected-Return Proxies (Single authored, 2026)", url: "research.html#certify-first" },
+            { page: "Research", section: "Working Paper", text: "A Meta-Method to Improve Implied Cost of Capital Metrics (with C. Homburg, L. Rothe, & R. Schick)", url: "research.html#meta-method" },
+            { page: "Research", section: "Code Repositories", text: "Deriving Cost-of-Capital-Relevant Earnings: A Bayesian Approach - Code and data pipelines", url: "research.html#code-repo" }
+        ];
+
         function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            const searchBar = document.getElementById('search-bar');
-            if (!searchBar.classList.contains('hidden')) searchBar.classList.add('hidden');
-            menu.classList.toggle('hidden');
+            document.getElementById('search-bar').classList.add('hidden');
+            document.getElementById('mobile-menu').classList.toggle('hidden');
         }
 
         function toggleSearch() {
+            document.getElementById('mobile-menu').classList.add('hidden');
             const searchBar = document.getElementById('search-bar');
-            const menu = document.getElementById('mobile-menu');
-            if (!menu.classList.contains('hidden')) menu.classList.add('hidden');
-            
             searchBar.classList.toggle('hidden');
             if (!searchBar.classList.contains('hidden')) {
                 document.getElementById('search-input').focus();
             }
         }
 
-        function filterPageContent() {
+        function runSiteSearch() {
             const query = document.getElementById('search-input').value.toLowerCase().trim();
-            const searchableItems = document.querySelectorAll('main p, main li');
-            let hasMatches = false;
-
-            searchableItems.forEach(item => {
-                if (query === '') {
-                    item.classList.remove('hidden');
-                    hasMatches = true;
-                } else if (item.textContent.toLowerCase().includes(query)) {
-                    item.classList.remove('hidden');
-                    hasMatches = true;
-                } else {
-                    item.classList.add('hidden');
-                }
-            });
-
-            const noResults = document.getElementById('no-results');
-            if (!hasMatches && query !== '') {
-                noResults.classList.remove('hidden');
-            } else {
-                noResults.classList.add('hidden');
+            const resultsContainer = document.getElementById('search-results');
+            
+            if (query === '') {
+                resultsContainer.classList.add('hidden');
+                resultsContainer.innerHTML = '';
+                return;
             }
+
+            const matches = siteIndex.filter(item => 
+                item.section.toLowerCase().includes(query) || 
+                item.text.toLowerCase().includes(query) ||
+                item.page.toLowerCase().includes(query)
+            );
+
+            let htmlOutput = '';
+            
+            if (matches.length === 0) {
+                htmlOutput = '<div class="text-gray-400 text-sm py-4 px-6 text-center">No matching results found.</div>';
+            } else {
+                matches.forEach(item => {
+                    htmlOutput += `
+                        <a href="${item.url}" onclick="clearSearch()" class="block px-6 py-4 hover:bg-slate-800 transition border-b border-gray-800 last:border-0 group">
+                            <div class="flex items-center justify-between text-sm text-[#0ea5e9] font-bold mb-1">
+                                <span>${item.section}</span>
+                                <span class="bg-slate-700 text-gray-200 px-2 py-0.5 rounded text-[10px] uppercase">${item.page}</span>
+                            </div>
+                            <div class="text-xs text-gray-400 leading-relaxed">${item.text}</div>
+                        </a>
+                    `;
+                });
+            }
+            
+            resultsContainer.innerHTML = htmlOutput;
+            resultsContainer.classList.remove('hidden');
         }
 
         function clearSearch() {
-            const input = document.getElementById('search-input');
-            input.value = '';
-            filterPageContent();
-            document.getElementById('search-bar').classList.add('hidden');
+            const searchInput = document.getElementById('search-input');
+            const searchResults = document.getElementById('search-results');
+            const searchBar = document.getElementById('search-bar');
+            
+            if(searchInput) searchInput.value = '';
+            if(searchResults) {
+                searchResults.innerHTML = '';
+                searchResults.classList.add('hidden');
+            }
+            if(searchBar) searchBar.classList.add('hidden');
         }
     </script>
 </body>
