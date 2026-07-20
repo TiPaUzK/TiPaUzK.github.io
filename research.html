@@ -13,15 +13,19 @@
 </head>
 <body class="bg-slate-50 text-slate-900 antialiased">
 
-    <!-- Black Header with Working Menu -->
+    <!-- Black Header with Working Menu & Search -->
     <nav class="bg-black text-white py-5 px-6 relative">
         <div class="max-w-4xl mx-auto flex justify-between items-center">
-            <button onclick="toggleMenu()" class="text-xl hover:text-gray-300 transition">
+            <button onclick="toggleMenu()" class="text-xl hover:text-gray-300 transition w-6 text-left" aria-label="Toggle Navigation">
                 <i class="fa-solid fa-bars"></i>
             </button>
             <span class="text-lg tracking-widest uppercase font-semibold">TIMO PAUEN</span>
-            <i class="fa-solid fa-magnifying-glass"></i>
+            <button onclick="toggleSearch()" class="text-xl hover:text-gray-300 transition w-6 text-right" aria-label="Toggle Search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
         </div>
+        
+        <!-- Dropdown Menu -->
         <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-black z-50 border-t border-gray-800">
             <div class="flex flex-col p-6 gap-4 text-center">
                 <a href="index.html" class="hover:text-gray-300 transition uppercase tracking-widest text-sm font-semibold">Home</a>
@@ -29,38 +33,47 @@
                 <a href="cv.pdf" target="_blank" class="hover:text-gray-300 transition uppercase tracking-widest text-sm font-semibold">CV</a>
             </div>
         </div>
+
+        <!-- Interactive In-Page Search Bar -->
+        <div id="search-bar" class="hidden absolute top-full left-0 w-full bg-slate-900 z-50 border-t border-gray-800 p-4">
+            <div class="max-w-4xl mx-auto flex items-center gap-3">
+                <i class="fa-solid fa-magnifying-glass text-gray-400"></i>
+                <input type="text" id="search-input" onkeyup="filterPageContent()" placeholder="Search papers, topics, co-authors..." class="w-full bg-transparent text-white focus:outline-none text-sm placeholder-gray-500">
+                <button onclick="clearSearch()" class="text-gray-400 hover:text-white text-xs uppercase tracking-wider font-semibold">Clear</button>
+            </div>
+        </div>
     </nav>
 
     <!-- Main Content -->
     <main class="max-w-4xl mx-auto px-6 py-16">
         
-        <!-- Main Header: Uppercase, Extra Bold -->
+        <!-- No Results Notice -->
+        <div id="no-results" class="hidden text-center text-slate-500 py-8 text-lg">
+            No matching papers or entries found.
+        </div>
+
+        <!-- Page Title -->
         <h1 class="font-extrabold text-3xl md:text-4xl uppercase tracking-tight text-black mb-12">RESEARCH</h1>
 
         <!-- Working Papers -->
         <section class="mb-14">
-            <!-- Subheaders: Title Case, Bold -->
             <h2 class="font-bold text-2xl text-black mb-6">Working Papers</h2>
             
-            <div class="mb-6">
-                <!-- Paper Title: Bold -->
-                <h3 class="font-bold text-black text-[1.05rem]">Cost of Capital: A Bayesian Approach<!--[cite: 1] --></h3>
-                <!-- Authors: Normal -->
+            <div class="searchable-item mb-6">
+                <h3 class="font-bold text-black text-[1.05rem]">Deriving Cost-of-Capital-Relevant Earnings: A Bayesian Approach<!--[cite: 1] --></h3>
                 <p class="text-black mb-0">Single authored (2026) &mdash; Job Market Paper</p>
-                <!-- Status/Journal: Italic -->
                 <p class="italic text-black mb-1">Working Paper</p>
-                <!-- Link: Light Blue -->
                 <a href="#" class="text-[#0ea5e9] hover:underline text-[0.95rem]">Draft available upon request</a>
             </div>
 
-            <div class="mb-6">
+            <div class="searchable-item mb-6">
                 <h3 class="font-bold text-black text-[1.05rem]">Certify First: Evaluating Expected-Return Proxies<!--[cite: 1] --></h3>
                 <p class="text-black mb-0">Single authored (2026)</p>
                 <p class="italic text-black mb-1">Working Paper</p>
                 <a href="#" class="text-[#0ea5e9] hover:underline text-[0.95rem]">Draft available upon request</a>
             </div>
 
-            <div class="mb-6">
+            <div class="searchable-item mb-6">
                 <h3 class="font-bold text-black text-[1.05rem]">A Meta-Method to Improve Implied Cost of Capital Metrics<!--[cite: 1] --></h3>
                 <p class="text-black mb-0">with C. Homburg, L. Rothe, & R. Schick<!--[cite: 1] --> (2026)</p>
                 <p class="italic text-black mb-1">Working Paper</p>
@@ -78,7 +91,7 @@
             <h2 class="font-bold text-2xl text-black mb-6">Code Repositories</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-                <div class="border border-slate-200 bg-white shadow-sm hover:shadow-md transition duration-200">
+                <div class="searchable-item border border-slate-200 bg-white shadow-sm hover:shadow-md transition duration-200">
                     <div class="bg-slate-100 h-48 w-full flex items-center justify-center border-b border-slate-200 text-slate-400">
                         <div class="text-center">
                             <i class="fa-solid fa-chart-line text-4xl mb-2"></i>
@@ -86,7 +99,7 @@
                         </div>
                     </div>
                     <div class="p-5">
-                        <h4 class="font-bold text-black mb-2">Deriving Valuation-Relevant Earnings: A Bayesian Approach<!--[cite: 1] --></h4>
+                        <h4 class="font-bold text-black mb-2">Deriving Cost-of-Capital-Relevant Earnings: A Bayesian Approach<!--[cite: 1] --></h4>
                         <p class="text-sm text-slate-700 mb-4 leading-relaxed">
                             Code and data pipelines to replicate the Bayesian framework for recovering expected returns.
                         </p>
@@ -102,7 +115,52 @@
     <script>
         function toggleMenu() {
             const menu = document.getElementById('mobile-menu');
+            const searchBar = document.getElementById('search-bar');
+            if (!searchBar.classList.contains('hidden')) searchBar.classList.add('hidden');
             menu.classList.toggle('hidden');
+        }
+
+        function toggleSearch() {
+            const searchBar = document.getElementById('search-bar');
+            const menu = document.getElementById('mobile-menu');
+            if (!menu.classList.contains('hidden')) menu.classList.add('hidden');
+            
+            searchBar.classList.toggle('hidden');
+            if (!searchBar.classList.contains('hidden')) {
+                document.getElementById('search-input').focus();
+            }
+        }
+
+        function filterPageContent() {
+            const query = document.getElementById('search-input').value.toLowerCase().trim();
+            const searchableItems = document.querySelectorAll('.searchable-item, main p, main li');
+            let hasMatches = false;
+
+            searchableItems.forEach(item => {
+                if (query === '') {
+                    item.classList.remove('hidden');
+                    hasMatches = true;
+                } else if (item.textContent.toLowerCase().includes(query)) {
+                    item.classList.remove('hidden');
+                    hasMatches = true;
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+
+            const noResults = document.getElementById('no-results');
+            if (!hasMatches && query !== '') {
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+            }
+        }
+
+        function clearSearch() {
+            const input = document.getElementById('search-input');
+            input.value = '';
+            filterPageContent();
+            document.getElementById('search-bar').classList.add('hidden');
         }
     </script>
 </body>
