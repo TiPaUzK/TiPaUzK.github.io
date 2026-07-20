@@ -7,30 +7,26 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap');
         body { font-family: 'Open Sans', sans-serif; }
-        .section-heading { font-weight: 800; letter-spacing: -0.02em; text-transform: uppercase; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased">
+<body class="bg-slate-50 text-slate-900 antialiased">
 
     <!-- Black Header with Working Menu -->
     <nav class="bg-black text-white py-5 px-6 relative">
         <div class="max-w-4xl mx-auto flex justify-between items-center">
-            <!-- Menu Button -->
             <button onclick="toggleMenu()" class="text-xl hover:text-gray-300 transition">
                 <i class="fa-solid fa-bars"></i>
             </button>
-            <span class="text-lg tracking-widest uppercase">TIMO PAUEN</span>
+            <span class="text-lg tracking-widest uppercase font-semibold">TIMO PAUEN</span>
             <i class="fa-solid fa-magnifying-glass"></i>
         </div>
-        
-        <!-- Dropdown Menu -->
         <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-black z-50 border-t border-gray-800">
             <div class="flex flex-col p-6 gap-4 text-center">
-                <a href="index.html" class="hover:text-gray-300 transition uppercase tracking-widest">Home</a>
-                <a href="research.html" class="hover:text-gray-300 transition uppercase tracking-widest">Research</a>
-                <a href="cv.pdf" target="_blank" class="hover:text-gray-300 transition uppercase tracking-widest">CV</a>
+                <a href="index.html" class="hover:text-gray-300 transition uppercase tracking-widest text-sm font-semibold">Home</a>
+                <a href="research.html" class="hover:text-gray-300 transition uppercase tracking-widest text-sm font-semibold">Research</a>
+                <a href="cv.pdf" target="_blank" class="hover:text-gray-300 transition uppercase tracking-widest text-sm font-semibold">CV</a>
             </div>
         </div>
     </nav>
@@ -40,21 +36,33 @@
             <div class="w-40 md:w-48 mb-8">
                 <img src="Timo Pauen_150x188.jpg" alt="Timo Pauen" class="w-full aspect-square object-cover shadow-sm rounded-full">
             </div>
-            <h1 class="section-heading text-3xl text-slate-900 mb-6">Welcome</h1>
-            <div class="max-w-3xl text-slate-700 text-[1.05rem] leading-relaxed space-y-6">
+            <h1 class="font-extrabold text-3xl uppercase tracking-tight text-black mb-6">Welcome</h1>
+            <div class="max-w-3xl text-slate-800 text-[1.05rem] leading-relaxed space-y-6 text-left">
                 <p>Hi, I am a Ph.D. Candidate at the University of Cologne, Germany. The thread running through my work is that the errors in analysts' and investors' expectations are not random but structured and tied to how people process information. I come at this from both the econometrics of measuring expectations when the inputs are biased, and the modelling of processes that generate these expectations in the first place. My job market paper, "Deriving Valuation-Relevant Earnings: A Bayesian Approach," is one instance — a Bayesian method that recovers the earnings expectations valuation requires, especially when the uncertainty in the information environment of analysts/investors is high.</p>
-                <p>This is my personal website. You can find my academic <a href="cv.pdf" target="_blank" class="text-blue-700 hover:underline font-semibold">CV here</a>.</p>
+                <p>This is my personal website. You can find my academic <a href="cv.pdf" target="_blank" class="text-[#0ea5e9] hover:underline font-semibold">CV here</a>.</p>
             </div>
         </div>
 
-        <h2 class="section-heading text-xl text-slate-900 mb-4">Experience</h2>
-        <ul class="list-disc pl-5 mb-12 text-slate-700 space-y-2">
-            <li>[2021]-current: Ph.D. Candidate / Research Assistant, University of Cologne</li>
-            <li>[2021]-current: Instructor for Cost Accounting (B.Sc.) and Value-Based Controlling (M.Sc.), University of Cologne</li>
+        <!-- Research Interests (Restored as Bullet Points) -->
+        <section class="mb-12">
+            <h2 class="font-bold text-2xl text-black mb-4">Research Interests</h2>
+            <ul class="list-disc pl-5 text-slate-800 space-y-2">
+                <li>Expected Returns<!--[cite: 1] --></li>
+                <li>Belief Formation and Analyst Expectations<!--[cite: 1] --></li>
+                <li>Measurement-Error Econometrics<!--[cite: 1] --></li>
+                <li>Bayesian Methods<!--[cite: 1] --></li>
+                <li>Empirical Asset Pricing<!--[cite: 1] --></li>
+            </ul>
+        </section>
+
+        <h2 class="font-bold text-2xl text-black mb-4">Experience</h2>
+        <ul class="list-disc pl-5 mb-12 text-slate-800 space-y-2">
+            <li>[2021]&ndash;current: Ph.D. Candidate / Research Assistant, University of Cologne</li>
+            <li>[2021]&ndash;current: Instructor for Cost Accounting (B.Sc.) and Value-Based Controlling (M.Sc.), University of Cologne</li>
         </ul>
 
-        <h2 class="section-heading text-xl text-slate-900 mb-4">Education</h2>
-        <ul class="list-disc pl-5 mb-12 text-slate-700 space-y-2">
+        <h2 class="font-bold text-2xl text-black mb-4">Education</h2>
+        <ul class="list-disc pl-5 mb-12 text-slate-800 space-y-2">
             <li>[2027]: Expected Ph.D. in Accounting, University of Cologne</li>
             <li>[2021]: Economics, Radboud University Nijmegen</li>
             <li>[2015]: Economics, University of Cologne</li>
@@ -62,19 +70,18 @@
 
         <!-- Footer with Icons -->
         <section class="border-t border-slate-300 mt-12">
-            <a href="https://github.com/TiPaUzK" class="block w-full py-4 border-b border-slate-300 hover:bg-slate-200 transition text-slate-500 hover:text-slate-700 text-center text-lg">
+            <a href="https://github.com/TiPaUzK" class="block w-full py-4 border-b border-slate-300 hover:bg-slate-200 transition text-slate-700 hover:text-black text-center text-lg font-semibold">
                 <i class="fa-brands fa-github mr-2"></i> GitHub
             </a>
-            <a href="https://controlling.uni-koeln.de/de/seminar/team/mitarbeitende/msc-timo-pauen" class="block w-full py-4 border-b border-slate-300 hover:bg-slate-200 transition text-slate-500 hover:text-slate-700 text-center text-lg">
+            <a href="https://controlling.uni-koeln.de/de/seminar/team/mitarbeitende/msc-timo-pauen" class="block w-full py-4 border-b border-slate-300 hover:bg-slate-200 transition text-slate-700 hover:text-black text-center text-lg font-semibold">
                 <i class="fa-solid fa-building-columns mr-2"></i> Chair Page
             </a>
-            <a href="mailto:timo.pauen@wiso.uni-koeln.de" class="block w-full py-4 border-b border-slate-300 hover:bg-slate-200 transition text-slate-500 hover:text-slate-700 text-center text-lg">
+            <a href="mailto:timo.pauen@wiso.uni-koeln.de" class="block w-full py-4 border-b border-slate-300 hover:bg-slate-200 transition text-slate-700 hover:text-black text-center text-lg font-semibold">
                 <i class="fa-regular fa-envelope mr-2"></i> Email
             </a>
         </section>
     </main>
 
-    <!-- JavaScript to toggle the menu -->
     <script>
         function toggleMenu() {
             const menu = document.getElementById('mobile-menu');
