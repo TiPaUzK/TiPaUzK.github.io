@@ -13,15 +13,19 @@
 </head>
 <body class="bg-slate-50 text-slate-900 antialiased">
 
-    <!-- Black Header with Working Menu -->
+    <!-- Black Header with Working Menu & Search -->
     <nav class="bg-black text-white py-5 px-6 relative">
         <div class="max-w-4xl mx-auto flex justify-between items-center">
-            <button onclick="toggleMenu()" class="text-xl hover:text-gray-300 transition">
+            <button onclick="toggleMenu()" class="text-xl hover:text-gray-300 transition w-6 text-left" aria-label="Toggle Navigation">
                 <i class="fa-solid fa-bars"></i>
             </button>
             <span class="text-lg tracking-widest uppercase font-semibold">TIMO PAUEN</span>
-            <i class="fa-solid fa-magnifying-glass"></i>
+            <button onclick="toggleSearch()" class="text-xl hover:text-gray-300 transition w-6 text-right" aria-label="Toggle Search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
         </div>
+        
+        <!-- Dropdown Menu -->
         <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-black z-50 border-t border-gray-800">
             <div class="flex flex-col p-6 gap-4 text-center">
                 <a href="index.html" class="hover:text-gray-300 transition uppercase tracking-widest text-sm font-semibold">Home</a>
@@ -29,21 +33,35 @@
                 <a href="cv.pdf" target="_blank" class="hover:text-gray-300 transition uppercase tracking-widest text-sm font-semibold">CV</a>
             </div>
         </div>
+
+        <!-- Interactive In-Page Search Bar -->
+        <div id="search-bar" class="hidden absolute top-full left-0 w-full bg-slate-900 z-50 border-t border-gray-800 p-4">
+            <div class="max-w-4xl mx-auto flex items-center gap-3">
+                <i class="fa-solid fa-magnifying-glass text-gray-400"></i>
+                <input type="text" id="search-input" onkeyup="filterPageContent()" placeholder="Search on this page... (e.g., Bayesian, Cost of capital, Cologne)" class="w-full bg-transparent text-white focus:outline-none text-sm placeholder-gray-500">
+                <button onclick="clearSearch()" class="text-gray-400 hover:text-white text-xs uppercase tracking-wider font-semibold">Clear</button>
+            </div>
+        </div>
     </nav>
 
     <main class="max-w-4xl mx-auto px-6 py-16">
+        <!-- No Results Notice -->
+        <div id="no-results" class="hidden text-center text-slate-500 py-8 text-lg">
+            No matching content found on this page.
+        </div>
+
         <div class="flex flex-col items-center text-center mb-16">
             <div class="w-40 md:w-48 mb-8">
                 <img src="Timo Pauen_150x188.jpg" alt="Timo Pauen" class="w-full aspect-square object-cover shadow-sm rounded-full">
             </div>
             <h1 class="font-extrabold text-3xl uppercase tracking-tight text-black mb-6">Welcome</h1>
             <div class="max-w-3xl text-slate-800 text-[1.05rem] leading-relaxed space-y-6 text-left">
-                <p>Hi, I am a Ph.D. Candidate at the University of Cologne, Germany. The thread running through my work is that the errors in analysts' and investors' expectations are not random but structured and tied to how people process information. I come at this from both the econometrics of measuring expectations when the inputs are biased, and the modelling of processes that generate these expectations in the first place. My job market paper, "Deriving Valuation-Relevant Earnings: A Bayesian Approach," is one instance — a Bayesian method that recovers the earnings expectations valuation requires, especially when the uncertainty in the information environment of analysts/investors is high.</p>
+                <p>Hi, I am a Ph.D. Candidate at the University of Cologne, Germany. The thread running through my work is that the errors in analysts' and investors' expectations are not random but structured and tied to how people process information. I come at this from both the econometrics of measuring expectations when the inputs are biased, and the modelling of processes that generate these expectations in the first place. My job market paper, "Deriving Cost-of-Capital-Relevant Earnings: A Bayesian Approach," is one instance — a Bayesian method that recovers the earnings expectations valuation requires, especially when the uncertainty in the information environment of analysts/investors is high.</p>
                 <p>This is my personal website. You can find my academic <a href="cv.pdf" target="_blank" class="text-[#0ea5e9] hover:underline font-semibold">CV here</a>.</p>
             </div>
         </div>
 
-        <!-- Research Interests (Restored as Bullet Points) -->
+        <!-- Research Interests -->
         <section class="mb-12">
             <h2 class="font-bold text-2xl text-black mb-4">Research Interests</h2>
             <ul class="list-disc pl-5 text-slate-800 space-y-2">
@@ -52,16 +70,17 @@
                 <li>Empirical asset pricing<!--[cite: 1] --></li>
                 <li>Measurement-error econometrics<!--[cite: 1] --></li>
                 <li>Bayesian econometrics<!--[cite: 1] --></li>
-                
             </ul>
         </section>
 
+        <!-- Experience -->
         <h2 class="font-bold text-2xl text-black mb-4">Experience</h2>
         <ul class="list-disc pl-5 mb-12 text-slate-800 space-y-2">
             <li>[2021]&ndash;current: Ph.D. Candidate / Research Assistant, University of Cologne</li>
             <li>[2021]&ndash;current: Instructor for Cost Accounting (B.Sc.) and Value-Based Controlling (M.Sc.), University of Cologne</li>
         </ul>
 
+        <!-- Education -->
         <h2 class="font-bold text-2xl text-black mb-4">Education</h2>
         <ul class="list-disc pl-5 mb-12 text-slate-800 space-y-2">
             <li>[2027]: Expected Ph.D. in Accounting, University of Cologne</li>
@@ -69,7 +88,7 @@
             <li>[2015]: Economics, University of Cologne</li>
         </ul>
 
-        <!-- Footer with Icons -->
+        <!-- Footer -->
         <section class="border-t border-slate-300 mt-12">
             <a href="https://github.com/TiPaUzK" class="block w-full py-4 border-b border-slate-300 hover:bg-slate-200 transition text-slate-700 hover:text-black text-center text-lg font-semibold">
                 <i class="fa-brands fa-github mr-2"></i> GitHub
@@ -86,7 +105,52 @@
     <script>
         function toggleMenu() {
             const menu = document.getElementById('mobile-menu');
+            const searchBar = document.getElementById('search-bar');
+            if (!searchBar.classList.contains('hidden')) searchBar.classList.add('hidden');
             menu.classList.toggle('hidden');
+        }
+
+        function toggleSearch() {
+            const searchBar = document.getElementById('search-bar');
+            const menu = document.getElementById('mobile-menu');
+            if (!menu.classList.contains('hidden')) menu.classList.add('hidden');
+            
+            searchBar.classList.toggle('hidden');
+            if (!searchBar.classList.contains('hidden')) {
+                document.getElementById('search-input').focus();
+            }
+        }
+
+        function filterPageContent() {
+            const query = document.getElementById('search-input').value.toLowerCase().trim();
+            const searchableItems = document.querySelectorAll('main p, main li');
+            let hasMatches = false;
+
+            searchableItems.forEach(item => {
+                if (query === '') {
+                    item.classList.remove('hidden');
+                    hasMatches = true;
+                } else if (item.textContent.toLowerCase().includes(query)) {
+                    item.classList.remove('hidden');
+                    hasMatches = true;
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+
+            const noResults = document.getElementById('no-results');
+            if (!hasMatches && query !== '') {
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+            }
+        }
+
+        function clearSearch() {
+            const input = document.getElementById('search-input');
+            input.value = '';
+            filterPageContent();
+            document.getElementById('search-bar').classList.add('hidden');
         }
     </script>
 </body>
