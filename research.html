@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research - Timo Pauen</title>
+    <title>Timo Pauen</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -13,20 +13,20 @@
 </head>
 <body class="bg-slate-50 text-slate-900 antialiased">
 
-    <!-- Black Header with Working Menu & Search -->
-    <nav class="bg-black text-white py-5 px-6 relative">
+    <!-- Black Header with Working Menu & Cross-Page Search -->
+    <nav class="bg-black text-white py-5 px-6 relative z-50">
         <div class="max-w-4xl mx-auto flex justify-between items-center">
-            <button onclick="toggleMenu()" class="text-xl hover:text-gray-300 transition w-6 text-center" aria-label="Toggle Navigation">
+            <button type="button" onclick="toggleMenu()" class="text-xl hover:text-gray-300 transition w-6 text-left cursor-pointer" aria-label="Toggle Navigation">
                 <i class="fa-solid fa-bars"></i>
             </button>
             <span class="text-lg tracking-widest uppercase font-semibold">TIMO PAUEN</span>
-            <button onclick="toggleSearch()" class="text-xl hover:text-gray-300 transition w-6 text-right" aria-label="Toggle Search">
+            <button type="button" onclick="toggleSearch()" class="text-xl hover:text-gray-300 transition w-6 text-right cursor-pointer" aria-label="Toggle Search">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </button>
         </div>
         
         <!-- Dropdown Menu -->
-        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-black z-50 border-t border-gray-800">
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-black border-t border-gray-800">
             <div class="flex flex-col p-6 gap-4 text-center">
                 <a href="index.html" class="hover:text-gray-300 transition uppercase tracking-widest text-sm font-semibold">Home</a>
                 <a href="research.html" class="hover:text-gray-300 transition uppercase tracking-widest text-sm font-semibold">Research</a>
@@ -34,132 +34,140 @@
             </div>
         </div>
 
-        <!-- Interactive In-Page Search Bar -->
-        <div id="search-bar" class="hidden absolute top-full left-0 w-full bg-slate-900 z-50 border-t border-gray-800 p-4">
-            <div class="max-w-4xl mx-auto flex items-center gap-3">
-                <i class="fa-solid fa-magnifying-glass text-gray-400"></i>
-                <input type="text" id="search-input" onkeyup="filterPageContent()" placeholder="Search papers, topics, co-authors..." class="w-full bg-transparent text-white focus:outline-none text-sm placeholder-gray-500">
-                <button onclick="clearSearch()" class="text-gray-400 hover:text-white text-xs uppercase tracking-wider font-semibold">Clear</button>
+        <!-- Interactive Cross-Page Search Bar -->
+        <div id="search-bar" class="hidden absolute top-full left-0 w-full bg-slate-900 border-t border-gray-800 p-4 shadow-xl">
+            <div class="max-w-4xl mx-auto">
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-magnifying-glass text-gray-400"></i>
+                    <input type="text" id="search-input" oninput="runSiteSearch()" placeholder="Search across Home & Research... (e.g., Cost of capital, Bayesian, Cologne)" class="w-full bg-transparent text-white focus:outline-none text-sm placeholder-gray-500">
+                    <button type="button" onclick="clearSearch()" class="text-gray-400 hover:text-white text-xs uppercase tracking-wider font-semibold cursor-pointer">Clear</button>
+                </div>
+                <!-- Search Results Dropdown -->
+                <div id="search-results" class="mt-3 max-h-60 overflow-y-auto hidden border-t border-gray-800 pt-3 space-y-2 text-left"></div>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
     <main class="max-w-4xl mx-auto px-6 py-16">
-        
-        <!-- No Results Notice -->
-        <div id="no-results" class="hidden text-center text-slate-500 py-8 text-lg">
-            No matching papers or entries found.
+        <!-- Centered Welcome Section -->
+        <div id="welcome" class="flex flex-col items-center text-center mb-16">
+            <div class="w-40 md:w-48 mb-8 mx-auto">
+                <img src="Timo Pauen_150x188.jpg" alt="Timo Pauen" class="w-full aspect-square object-cover shadow-sm rounded-full mx-auto">
+            </div>
+            <h1 class="font-extrabold text-3xl uppercase tracking-tight text-black mb-6 text-center">Welcome</h1>
+            <div class="max-w-3xl text-slate-800 text-[1.05rem] leading-relaxed space-y-6 text-center mx-auto">
+                <p class="text-center">Hi, I am a Ph.D. Candidate at the University of Cologne, Germany. The thread running through my work is that the errors in analysts' and investors' expectations are not random but structured and tied to how people process information. I come at this from both the econometrics of measuring expectations when the inputs are biased, and the modelling of processes that generate these expectations in the first place. My job market paper, "Deriving Cost-of-Capital-Relevant Earnings: A Bayesian Approach," is one instance — a Bayesian method that recovers the earnings expectations valuation requires, especially when the uncertainty in the information environment of analysts/investors is high.</p>
+                <p class="text-center">This is my personal website. You can find my academic <a href="cv.pdf" target="_blank" class="text-[#0ea5e9] hover:underline font-semibold">CV here</a>.</p>
+            </div>
         </div>
 
-        <!-- Page Title -->
-        <h1 class="font-extrabold text-3xl md:text-4xl uppercase tracking-tight text-black mb-12">RESEARCH</h1>
-
-        <!-- Working Papers -->
-        <section class="mb-14">
-            <h2 class="font-bold text-2xl text-black mb-6">Working Papers</h2>
-            
-            <div class="searchable-item mb-6">
-                <h3 class="font-bold text-black text-[1.05rem]">Deriving Cost-of-Capital-Relevant Earnings: A Bayesian Approach<!--[cite: 1] --></h3>
-                <p class="text-black mb-0">Single authored (2026) &mdash; Job Market Paper</p>
-                <p class="italic text-black mb-1">Working Paper</p>
-                <a href="#" class="text-[#0ea5e9] hover:underline text-[0.95rem]">Draft available upon request</a>
-            </div>
-
-            <div class="searchable-item mb-6">
-                <h3 class="font-bold text-black text-[1.05rem]">Certify First: Evaluating Expected-Return Proxies<!--[cite: 1] --></h3>
-                <p class="text-black mb-0">Single authored (2026)</p>
-                <p class="italic text-black mb-1">Working Paper</p>
-                <a href="#" class="text-[#0ea5e9] hover:underline text-[0.95rem]">Draft available upon request</a>
-            </div>
-
-            <div class="searchable-item mb-6">
-                <h3 class="font-bold text-black text-[1.05rem]">A Meta-Method to Improve Implied Cost of Capital Metrics<!--[cite: 1] --></h3>
-                <p class="text-black mb-0">with C. Homburg, L. Rothe, & R. Schick<!--[cite: 1] --> (2026)</p>
-                <p class="italic text-black mb-1">Working Paper</p>
-            </div>
+        <!-- Research Interests -->
+        <section id="research-interests" class="mb-12">
+            <h2 class="font-bold text-2xl text-black mb-4">Research Interests</h2>
+            <ul class="list-disc pl-5 text-slate-800 space-y-2">
+                <li>Cost of capital<!-- --></li>
+                <li>Belief formation<!-- --></li>
+                <li>Empirical asset pricing<!-- --></li>
+                <li>Measurement-error econometrics<!-- --></li>
+                <li>Bayesian econometrics<!-- --></li>
+            </ul>
         </section>
 
-        <!-- Publications -->
-        <section class="mb-14">
-            <h2 class="font-bold text-2xl text-black mb-6">Publications</h2>
-            <p class="text-slate-600 italic">No peer-reviewed publications currently.</p>
+        <!-- Experience -->
+        <section id="experience" class="mb-12">
+            <h2 class="font-bold text-2xl text-black mb-4">Experience</h2>
+            <ul class="list-disc pl-5 text-slate-800 space-y-2">
+                <li>[2021]&ndash;current: Ph.D. Candidate / Research Assistant, University of Cologne</li>
+                <li>[2021]&ndash;current: Instructor for Cost Accounting (B.Sc.) and Value-Based Controlling (M.Sc.), University of Cologne</li>
+            </ul>
         </section>
 
-        <!-- Code Repositories -->
-        <section class="mb-14">
-            <h2 class="font-bold text-2xl text-black mb-6">Code Repositories</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-                <div class="searchable-item border border-slate-200 bg-white shadow-sm hover:shadow-md transition duration-200">
-                    <div class="bg-slate-100 h-48 w-full flex items-center justify-center border-b border-slate-200 text-slate-400">
-                        <div class="text-center">
-                            <i class="fa-solid fa-chart-line text-4xl mb-2"></i>
-                            <p class="text-sm font-semibold uppercase tracking-wider">Repository Image</p>
-                        </div>
-                    </div>
-                    <div class="p-5">
-                        <h4 class="font-bold text-black mb-2">Deriving Cost-of-Capital-Relevant Earnings: A Bayesian Approach<!--[cite: 1] --></h4>
-                        <p class="text-sm text-slate-700 mb-4 leading-relaxed">
-                            Code and data pipelines to replicate the Bayesian framework for recovering expected returns.
-                        </p>
-                        <a href="https://github.com/TiPaUzK" target="_blank" class="text-[#0ea5e9] hover:underline text-[0.95rem]">
-                            GitHub Repository
-                        </a>
-                    </div>
-                </div>
-            </div>
+        <!-- Education -->
+        <section id="education" class="mb-12">
+            <h2 class="font-bold text-2xl text-black mb-4">Education</h2>
+            <ul class="list-disc pl-5 text-slate-800 space-y-2">
+                <li>[2027]: Expected Ph.D. in Accounting, University of Cologne</li>
+                <li>[2021]: Economics, Radboud University Nijmegen</li>
+                <li>[2015]: Economics, University of Cologne</li>
+            </ul>
+        </section>
+
+        <!-- Footer -->
+        <section class="border-t border-slate-300 mt-12">
+            <a href="https://github.com/TiPaUzK" class="block w-full py-4 border-b border-slate-300 hover:bg-slate-200 transition text-slate-700 hover:text-black text-center text-lg font-semibold">
+                <i class="fa-brands fa-github mr-2"></i> GitHub
+            </a>
+            <a href="https://controlling.uni-koeln.de/de/seminar/team/mitarbeitende/msc-timo-pauen" class="block w-full py-4 border-b border-slate-300 hover:bg-slate-200 transition text-slate-700 hover:text-black text-center text-lg font-semibold">
+                <i class="fa-solid fa-building-columns mr-2"></i> Chair Page
+            </a>
+            <a href="mailto:timo.pauen@wiso.uni-koeln.de" class="block w-full py-4 border-b border-slate-300 hover:bg-slate-200 transition text-slate-700 hover:text-black text-center text-lg font-semibold">
+                <i class="fa-regular fa-envelope mr-2"></i> Email
+            </a>
         </section>
     </main>
 
     <script>
+        const siteIndex = [
+            { page: "Home", section: "Welcome & JMP", text: "Hi, I am a Ph.D. Candidate at the University of Cologne. Job Market Paper: Deriving Cost-of-Capital-Relevant Earnings: A Bayesian Approach.", url: "index.html#welcome" },
+            { page: "Home", section: "Research Interests", text: "Cost of capital, Belief formation, Empirical asset pricing, Measurement-error econometrics, Bayesian econometrics.", url: "index.html#research-interests" },
+            { page: "Home", section: "Experience", text: "Ph.D. Candidate / Research Assistant, University of Cologne. Instructor for Cost Accounting and Value-Based Controlling.", url: "index.html#experience" },
+            { page: "Home", section: "Education", text: "Expected Ph.D. in Accounting (2027), University of Cologne. Economics, Radboud University Nijmegen.", url: "index.html#education" },
+            { page: "Research", section: "Job Market Paper", text: "Deriving Cost-of-Capital-Relevant Earnings: A Bayesian Approach (Single authored, 2026)", url: "research.html#jmp" },
+            { page: "Research", section: "Working Paper", text: "Certify First: Evaluating Expected-Return Proxies (Single authored, 2026)", url: "research.html#certify-first" },
+            { page: "Research", section: "Working Paper", text: "A Meta-Method to Improve Implied Cost of Capital Metrics (with C. Homburg, L. Rothe, & R. Schick)", url: "research.html#meta-method" },
+            { page: "Research", section: "Code Repositories", text: "Deriving Cost-of-Capital-Relevant Earnings: A Bayesian Approach - Code and data pipelines", url: "research.html#code-repo" }
+        ];
+
         function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            const searchBar = document.getElementById('search-bar');
-            if (!searchBar.classList.contains('hidden')) searchBar.classList.add('hidden');
-            menu.classList.toggle('hidden');
+            document.getElementById('search-bar').classList.add('hidden');
+            document.getElementById('mobile-menu').classList.toggle('hidden');
         }
 
         function toggleSearch() {
+            document.getElementById('mobile-menu').classList.add('hidden');
             const searchBar = document.getElementById('search-bar');
-            const menu = document.getElementById('mobile-menu');
-            if (!menu.classList.contains('hidden')) menu.classList.add('hidden');
-            
             searchBar.classList.toggle('hidden');
             if (!searchBar.classList.contains('hidden')) {
                 document.getElementById('search-input').focus();
             }
         }
 
-        function filterPageContent() {
+        function runSiteSearch() {
             const query = document.getElementById('search-input').value.toLowerCase().trim();
-            const searchableItems = document.querySelectorAll('.searchable-item, main p, main li');
-            let hasMatches = false;
-
-            searchableItems.forEach(item => {
-                if (query === '') {
-                    item.classList.remove('hidden');
-                    hasMatches = true;
-                } else if (item.textContent.toLowerCase().includes(query)) {
-                    item.classList.remove('hidden');
-                    hasMatches = true;
-                } else {
-                    item.classList.add('hidden');
-                }
-            });
-
-            const noResults = document.getElementById('no-results');
-            if (!hasMatches && query !== '') {
-                noResults.classList.remove('hidden');
-            } else {
-                noResults.classList.add('hidden');
+            const resultsContainer = document.getElementById('search-results');
+            
+            if (!query) {
+                resultsContainer.innerHTML = '';
+                resultsContainer.classList.add('hidden');
+                return;
             }
+
+            const matches = siteIndex.filter(item => 
+                item.section.toLowerCase().includes(query) || 
+                item.text.toLowerCase().includes(query) ||
+                item.page.toLowerCase().includes(query)
+            );
+
+            if (matches.length === 0) {
+                resultsContainer.innerHTML = '<div class="text-gray-400 text-xs py-2">No matching results found across pages.</div>';
+            } else {
+                resultsContainer.innerHTML = matches.map(item => `
+                    <a href="${item.url}" onclick="clearSearch()" class="block p-2 hover:bg-slate-800 rounded transition group">
+                        <div class="flex items-center justify-between text-xs text-[#0ea5e9] font-semibold mb-0.5">
+                            <span>${item.section}</span>
+                            <span class="bg-slate-800 text-gray-300 px-1.5 py-0.5 rounded text-[10px] group-hover:bg-slate-700">${item.page}</span>
+                        </div>
+                        <div class="text-xs text-gray-300 line-clamp-2">${item.text}</div>
+                    </a>
+                `).join('');
+            }
+            resultsContainer.classList.remove('hidden');
         }
 
         function clearSearch() {
-            const input = document.getElementById('search-input');
-            input.value = '';
-            filterPageContent();
+            document.getElementById('search-input').value = '';
+            document.getElementById('search-results').innerHTML = '';
+            document.getElementById('search-results').classList.add('hidden');
             document.getElementById('search-bar').classList.add('hidden');
         }
     </script>
