@@ -77,16 +77,28 @@
                         <p class="text-slate-800 leading-relaxed text-[0.97rem]">Prior research replaces investor cash flow expectations with analyst forecasts to derive implied cost of capital metrics (ICCs). These ICCs are known to track expected returns poorly. I develop a parsimonious Bayesian model that estimates investors’ earnings expectations directly, filtering noisy analyst signals toward a fundamental prior when the signal’s uncertainty is high. The empirical proxy for this uncertainty – the squared common surprise (SCS) – identifies firms that are currently distressed but realize the largest improvements in profitability over the following year. The model anticipates this earnings reversion, departing most from analyst forecasts precisely for high-uncertainty firms and, notably, when analysts agree the most. Among low-dispersion firms (where forecasts appear most reliable), analyst-based ICCs are nearly flat across SCS quintiles, assigning almost the same cost of capital to low- and high-SCS firms whose average realized future returns differ by 19 percentage points; ICCs built from my model’s earnings instead project this spread far more closely (11% versus 0% for analyst ICCs). In predictability regressions, the model’s ICCs further deliver slopes near one and significantly higher explained variation. Moreover, three of five ICCs derived from the model’s earnings are reliable under common measurement-error criteria, and – contrary to prior evidence – the composite ICC is reliable in both cross-sectional and time-series designs.</p>
                     </div>
 
-                    <figure>
-                        <img src="jmp_coverage.png" alt="Coverage and annual composite implied cost of capital estimates based on analyst, Bayesian, and MG-adjusted forecasts" class="w-full h-auto border border-slate-200 bg-white">
-                        <figcaption class="mt-2 text-xs leading-relaxed text-slate-600">Coverage and annual composite ICC estimates based on analyst, Bayesian, and MG-adjusted forecasts.</figcaption>
-                    </figure>
-                </div>
+                    <div class="space-y-7">
+                        <figure>
+                            <button type="button" onclick="openImageModal('jmp_coverage.png', 'Coverage and annual composite ICC estimates based on analyst, Bayesian, and MG-adjusted forecasts.')" class="group block w-full text-left cursor-zoom-in" aria-label="Enlarge coverage figure">
+                                <div class="relative overflow-hidden border border-slate-200 bg-white">
+                                    <img src="jmp_coverage.png" alt="Coverage and annual composite implied cost of capital estimates based on analyst, Bayesian, and MG-adjusted forecasts" class="w-full h-auto transition duration-200 group-hover:opacity-90">
+                                    <div class="absolute inset-x-0 bottom-0 bg-black/65 text-white text-[11px] py-1.5 px-2 text-center opacity-0 group-hover:opacity-100 transition">Click to enlarge</div>
+                                </div>
+                            </button>
+                            <figcaption class="mt-2 text-xs leading-relaxed text-slate-600">Coverage and annual composite ICC estimates based on analyst, Bayesian, and MG-adjusted forecasts.</figcaption>
+                        </figure>
 
-                <figure class="mt-8 max-w-3xl mx-auto">
-                    <img src="jmp_return_spreads.png" alt="Future realized return spreads for portfolios formed on analyst, Bayesian, and MG-adjusted implied cost of capital measures" class="w-full h-auto border border-slate-200 bg-white">
-                    <figcaption class="mt-2 text-xs leading-relaxed text-slate-600">Future realized returns for portfolios formed on the Composite, OJ, PEG, GLS, CT, and EP ICCs derived from analyst, Bayesian, and MG-adjusted forecasts.</figcaption>
-                </figure>
+                        <figure>
+                            <button type="button" onclick="openImageModal('jmp_return_spreads.png', 'Future realized returns for portfolios formed on the Composite, OJ, PEG, GLS, CT, and EP ICCs derived from analyst, Bayesian, and MG-adjusted forecasts.')" class="group block w-full text-left cursor-zoom-in" aria-label="Enlarge return-spread figure">
+                                <div class="relative overflow-hidden border border-slate-200 bg-white">
+                                    <img src="jmp_return_spreads.png" alt="Future realized return spreads for portfolios formed on analyst, Bayesian, and MG-adjusted implied cost of capital measures" class="w-full h-auto transition duration-200 group-hover:opacity-90">
+                                    <div class="absolute inset-x-0 bottom-0 bg-black/65 text-white text-[11px] py-1.5 px-2 text-center opacity-0 group-hover:opacity-100 transition">Click to enlarge</div>
+                                </div>
+                            </button>
+                            <figcaption class="mt-2 text-xs leading-relaxed text-slate-600">Future realized returns for portfolios formed on the Composite, OJ, PEG, GLS, CT, and EP ICCs derived from analyst, Bayesian, and MG-adjusted forecasts.</figcaption>
+                        </figure>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -134,6 +146,17 @@
             </a>
         </section>
     </main>
+
+    <!-- Image Lightbox -->
+    <div id="image-modal" class="hidden fixed inset-0 z-[100] bg-black/85 p-4 md:p-8 items-center justify-center" onclick="closeImageModal(event)">
+        <div class="relative max-w-6xl w-full max-h-full flex flex-col items-center" onclick="event.stopPropagation()">
+            <button type="button" onclick="closeImageModal()" class="absolute -top-2 -right-1 md:-right-4 z-10 w-10 h-10 rounded-full bg-white text-black shadow-lg hover:bg-slate-100 transition text-xl" aria-label="Close enlarged figure">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <img id="image-modal-img" src="" alt="" class="max-w-full max-h-[82vh] object-contain bg-white shadow-2xl">
+            <p id="image-modal-caption" class="mt-3 max-w-4xl text-center text-sm text-slate-200 leading-relaxed"></p>
+        </div>
+    </div>
 
     <!-- Cross-Page Search Script -->
     <script>
@@ -200,6 +223,31 @@
             resultsContainer.innerHTML = htmlOutput;
             resultsContainer.classList.remove('hidden');
         }
+
+
+        function openImageModal(src, caption) {
+            const modal = document.getElementById('image-modal');
+            const img = document.getElementById('image-modal-img');
+            const captionEl = document.getElementById('image-modal-caption');
+            img.src = src;
+            img.alt = caption;
+            captionEl.textContent = caption;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeImageModal(event) {
+            if (event && event.target !== event.currentTarget) return;
+            const modal = document.getElementById('image-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') closeImageModal();
+        });
 
         function clearSearch() {
             const searchInput = document.getElementById('search-input');
