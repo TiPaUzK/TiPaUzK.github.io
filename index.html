@@ -54,11 +54,41 @@
             <h1 class="font-extrabold text-3xl uppercase tracking-tight text-black mb-6 text-center">Welcome</h1>
             
             <div class="max-w-3xl mx-auto text-center text-slate-800 text-[1.05rem] leading-relaxed space-y-6">
-                <p>Hi, I am a Ph.D. Candidate in Accounting at the University of Cologne, Germany. My research focuses on valuation and cost of capital, earnings expectations and analyst forecasts, and the measurement of expected-return proxies. A common theme is how researchers can make reliable inferences about valuation-relevant expectations when the quantities of interest are unobservable and the available inputs are noisy or systematically biased.</p>
-                <p>My job market paper, "Cost of Capital: A Bayesian Approach," develops a Bayesian framework for estimating the earnings expectations required for valuation. The framework weighs analyst forecasts against fundamental earnings information based on perceived uncertainties to recover the permanent component of expected earnings relevant for long-horizon valuation.</p>
+                <p>Hi, I am a Ph.D. Candidate in Accounting at the University of Cologne, Germany. My research focuses on firm valuation and on measuring expectations about future earnings and returns. A common theme is how researchers can make reliable inferences about these expectations when they are unobservable and must be recovered from noisy or systematically biased data.</p>
                 <p>This is my personal website. You can find my academic <a href="Pauen_Academic_CV.pdf" target="_blank" class="text-[#0ea5e9] hover:underline font-semibold">CV here</a>.</p>
             </div>
         </div>
+
+        <!-- Job Market Paper -->
+        <section id="job-market-paper" class="mb-16">
+            <h2 class="font-bold text-2xl text-black mb-6">Job Market Paper</h2>
+            <div class="border border-slate-200 bg-white shadow-sm p-6 md:p-8">
+                <div class="mb-6">
+                    <h3 class="font-bold text-xl text-black mb-1">Cost of Capital: A Bayesian Approach</h3>
+                    <p class="text-slate-600 text-sm mb-2">Single authored (2026)</p>
+                    <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7165678" target="_blank" class="text-[#0ea5e9] hover:underline text-[0.95rem] inline-flex items-center gap-1">
+                        <i class="fa-solid fa-external-link-alt text-xs"></i> View on SSRN
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                    <div>
+                        <h4 class="font-semibold text-black mb-3">Abstract</h4>
+                        <p class="text-slate-800 leading-relaxed text-[0.97rem]">Prior research replaces investor cash flow expectations with analyst forecasts to derive implied cost of capital metrics (ICCs). These ICCs are known to track expected returns poorly. I develop a parsimonious Bayesian model that estimates investors’ earnings expectations directly, filtering noisy analyst signals toward a fundamental prior when the signal’s uncertainty is high. The empirical proxy for this uncertainty – the squared common surprise (SCS) – identifies firms that are currently distressed but realize the largest improvements in profitability over the following year. The model anticipates this earnings reversion, departing most from analyst forecasts precisely for high-uncertainty firms and, notably, when analysts agree the most. Among low-dispersion firms (where forecasts appear most reliable), analyst-based ICCs are nearly flat across SCS quintiles, assigning almost the same cost of capital to low- and high-SCS firms whose average realized future returns differ by 19 percentage points; ICCs built from my model’s earnings instead project this spread far more closely (11% versus 0% for analyst ICCs). In predictability regressions, the model’s ICCs further deliver slopes near one and significantly higher explained variation. Moreover, three of five ICCs derived from the model’s earnings are reliable under common measurement-error criteria, and – contrary to prior evidence – the composite ICC is reliable in both cross-sectional and time-series designs.</p>
+                    </div>
+
+                    <figure>
+                        <img src="jmp_coverage.png" alt="Coverage and annual composite implied cost of capital estimates based on analyst, Bayesian, and MG-adjusted forecasts" class="w-full h-auto border border-slate-200 bg-white">
+                        <figcaption class="mt-2 text-xs leading-relaxed text-slate-600">Coverage and annual composite ICC estimates based on analyst, Bayesian, and MG-adjusted forecasts.</figcaption>
+                    </figure>
+                </div>
+
+                <figure class="mt-8 max-w-3xl mx-auto">
+                    <img src="jmp_return_spreads.png" alt="Future realized return spreads for portfolios formed on analyst, Bayesian, and MG-adjusted implied cost of capital measures" class="w-full h-auto border border-slate-200 bg-white">
+                    <figcaption class="mt-2 text-xs leading-relaxed text-slate-600">Future realized returns for portfolios formed on the Composite, OJ, PEG, GLS, CT, and EP ICCs derived from analyst, Bayesian, and MG-adjusted forecasts.</figcaption>
+                </figure>
+            </div>
+        </section>
 
         <!-- Research Interests -->
         <section id="research-interests" class="mb-12">
@@ -108,7 +138,8 @@
     <!-- Cross-Page Search Script -->
     <script>
         const siteIndex = [
-            { page: "Home", section: "Welcome & JMP", text: "Ph.D. Candidate in Accounting at the University of Cologne. Research: valuation and cost of capital, earnings expectations and analyst forecasts, expected-return measurement. Job Market Paper: Cost of Capital: A Bayesian Approach.", url: "index.html#welcome" },
+            { page: "Home", section: "Welcome", text: "Ph.D. Candidate in Accounting at the University of Cologne. Research on firm valuation and the measurement of expectations about future earnings and returns.", url: "index.html#welcome" },
+            { page: "Home", section: "Job Market Paper", text: "Cost of Capital: A Bayesian Approach. Bayesian estimation of investor earnings expectations and implied cost of capital.", url: "index.html#job-market-paper" },
             { page: "Home", section: "Research Interests", text: "Valuation and cost of capital, Earnings expectations and analyst forecasts, Capital-markets research, Measurement-error econometrics, Bayesian methods.", url: "index.html#research-interests" },
             { page: "Home", section: "Experience", text: "Ph.D. Candidate / Research Assistant, University of Cologne. Instructor for Cost Accounting and Value-Based Controlling.", url: "index.html#experience" },
             { page: "Home", section: "Education", text: "Expected Ph.D. in Accounting (2027), University of Cologne. Economics, Radboud University Nijmegen.", url: "index.html#education" },
